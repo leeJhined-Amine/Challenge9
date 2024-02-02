@@ -45,18 +45,15 @@ function averagePages(accum, element3){
 }
 console.log(numPages/arrayPages.length);
 
+//Started putting the function directly inside the built functions (didn't know i could do that)
 
 //Challenge4-returning how many times a word is repeated in an array
 const inputArray = ["hello", "world", "hello"];
 function countFrequency(stringsArray) {
-    // Use reduce to build an object with string frequencies
     const frequencyObject = stringsArray.reduce((acc, currentString) => {
-      // Check if the key exists in the accumulator
         if (acc.hasOwnProperty(currentString)) {
-            // Increment the count for the current string
             acc[currentString]++;
         } else {
-            // Initialize the count for the current string if it doesn't exist
             acc[currentString] = 1;
         }
         return acc;
@@ -85,10 +82,18 @@ let People = [
         city:'new york'
     }
 ]
-function getCityPopulation(data){
-    const Population = data.reduce((acc, city) => {
-        let findCity
-        
-    }, {});   
+function countPeopleByCity(peopleArray) {
+    const cityCount = peopleArray.reduce((acc, person) => {
+        const city = person.city;
+        if (acc.hasOwnProperty(city)) {
+            acc[city]++;
+        }
+        else{
+            acc[city] = 1;
+        }
+        return acc;
+    }, {});
+  
+    return cityCount;
 }
-console.log(getCityPopulation(People));
+console.log(countPeopleByCity(People));
